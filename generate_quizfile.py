@@ -3,9 +3,6 @@ import json
 import os
 from pprint import pprint
 
-parser = argparse.ArgumentParser(description="Generate a quiz file")
-parser.add_argument("textfile", type=str, help="The name of the quiz file")
-
 quiz = {
     "meta": {
         "title": "",
@@ -18,12 +15,10 @@ quiz = {
 }
 
 
-def main():
-    args = parser.parse_args()
-    textfile = args.textfile
+def generate_from_file(textfile: str, dst: str, verbose: bool = True) -> None:
     assert os.path.exists(textfile), "The file does not exist"
 
-    dst = f"quizzes/{os.path.basename(textfile).split('.')[0]}.json"
+    # dst = f"quizzes/{os.path.basename(textfile).split('.')[0]}.json"
     question_id = 0
 
     with open(textfile, "r", encoding="utf-8") as f:
@@ -57,7 +52,7 @@ def main():
 
     with open(dst, "w", encoding="utf-8") as fp:
         json.dump(quiz, fp=fp, indent=4, ensure_ascii=False)
-    pprint(quiz)
+    if verbose: pprint(quiz)
     print(f"Quiz generated in {dst}")
 
 
@@ -84,4 +79,9 @@ def parse(lines):
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Generate a quiz file")
+    parser.add_argument("textfile", type=str, help="The name of the quiz file")
+    args = parser.parse_args()
+    textfile = args.textfile
+    dst = os.path.basename(textfile).split(".")[0]
+    generate_from_file(textfile, dst=f"quizzes/{dst}.json")

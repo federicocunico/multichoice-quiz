@@ -1,0 +1,50 @@
+{
+    "meta": {
+        "title": "",
+        "author": "",
+        "licence": "",
+        "homepage": "",
+        "contributors": []
+    },
+    "quiz": {
+        "Sezione Facile": {
+            "0": {
+                "question": "Quale è un numero?",
+                "answers": {
+                    "A": "pippo",
+                    "B": "123",
+                    "C": "alberto"
+                },
+                "right": [
+                    "B"
+                ]
+            },
+            "1": {
+                "question": "Chi è una persona?",
+                "answers": {
+                    "A": "Verona",
+                    "B": "Paolo",
+                    "C": "Milano",
+                    "D": "Hannover",
+                    "E": "Monaco"
+                },
+                "right": [
+                    "B"
+                ]
+            }
+        },
+        "Sezione Complessa": {
+            "2": {
+                "question": "Quale di questi è un gatto?",
+                "answers": {
+                    "A": "Venezia",
+                    "B": "Albero",
+                    "C": "CiccioPanzoPanzotto detto Sir mi stravacco"
+                },
+                "right": [
+                    "C"
+                ]
+            }
+        }
+    }
+}

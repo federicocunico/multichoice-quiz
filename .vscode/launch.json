@@ -22,11 +22,25 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "Quiz Start",
+            "name": "Quiz Start (legacy)",
             "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/quizgame.py",
-            "args": ["questions", "--randomize"],
+            "args": [
+                "questions",
+                "--randomize"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Quiz Start",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "args": [
+                "questions.txt",
+                "--randomize"
+            ],
             "console": "integratedTerminal"
         }
     ]

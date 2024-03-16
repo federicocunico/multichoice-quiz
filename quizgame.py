@@ -101,11 +101,6 @@ A quiz game for multiple choice tests
             raise QuizNotFound()
 
         game = self.readGameFile()
-        if randomize:
-            print(Colors.blue("Randomizing questions..."))
-            game = self.randomizeQuestions(game)
-            print(Colors.blue("Questions randomized."))
-
         for chapter in game["quiz"]:
             self.chapters.append(chapter)
             # print(f"Chapter: {chapter}")
@@ -159,58 +154,6 @@ A quiz game for multiple choice tests
             print(f"unable to read {self.topic}")
 
         return self.rawGame
-
-    def randomizeQuestions(
-        self,
-        game: dict,
-        shuffle_chapters: bool = True,
-        shuffle_questions: bool = True,
-        shuffle_answers: bool = True,
-    ) -> dict:
-        """shuffle the questions, chapters and answers in a quiz"""
-
-        def _get_letter(i):
-            return chr(ord("A") + i)
-
-        # Shuffling chapters
-        if shuffle_chapters:
-            chapters = list(game["quiz"].keys())
-            random.shuffle(chapters)
-            tmp = {chapter: game["quiz"][chapter] for chapter in chapters}
-            game["quiz"] = tmp
-
-        # Shuffling questions
-        if shuffle_questions:
-            for chapter in game["quiz"]:
-                questions = list(game["quiz"][chapter].keys())
-                random.shuffle(questions)
-                tmp = {
-                    question: game["quiz"][chapter][question] for question in questions
-                }
-                game["quiz"][chapter] = tmp
-
-        # Shuffling answers
-        if shuffle_answers:
-            for chapter in game["quiz"]:
-                for question in game["quiz"][chapter]:
-                    keys = list(game["quiz"][chapter][question]["answers"].keys())
-                    random.shuffle(keys)
-                    tmp = {
-                        key: game["quiz"][chapter][question]["answers"][key]
-                        for key in keys
-                    }
-
-                    # reindex answers and right answers
-                    rights = game["quiz"][chapter][question]["right"]
-                    newrights = []
-                    for right in rights:
-                        newrights.append(_get_letter(keys.index(right)))
-                    game["quiz"][chapter][question]["right"] = newrights
-                    game["quiz"][chapter][question]["answers"] = {
-                        _get_letter(i): tmp[key] for i, key in enumerate(keys)
-                    }
-
-        return game
 
     def getQuestion(self) -> list:
         """get one question out of the heap"""
