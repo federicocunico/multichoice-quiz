@@ -9,6 +9,33 @@ Clone the git repo, move to the folder you cloned in and type `python3 quizgame.
 
 All quizzes must be put in the subfolder `./quizzes` as `.json` files.
 
+## Quiz creation
+
+In this fork it's possible to create easily a quiz. Provide a file like the following named for instance `questions.txt`, and then execute `python main.py /path/to/questions.txt`
+Note that the * indicates which answer is the right one. Use empty lines to separate questions.
+
+```
+# Section A
+<question>
+answer1
+*answer2
+answer3
+
+<question2>
+*answer1
+answer2
+answer3
+
+# Section B
+<question>
+answer1
+answer2
+*answer3
+```
+
+### Build
+Just in case you need to build: install `pyinstaller` and run `pyinstaller --onefile main.py`. It should create a `dist/` folder with the executable inside.
+
 ### Screenshots
 ![multichoice-quiz](https://user-images.githubusercontent.com/5388631/99889512-4f0d1880-2c56-11eb-82d1-1e9a7fe3c45c.png)
 ![multichoice-quiz_question](https://user-images.githubusercontent.com/5388631/99889513-4fa5af00-2c56-11eb-8c0d-08cf84386980.png)
@@ -26,29 +53,11 @@ creating a quiz with the best information security questions out there for your 
 Part of multichoice-quiz. See below for more information
 
 
-### Grundschutz-Quiz
-Übungsfragen für den BSI-Grundschutz Praktiker
-#### Source
-https://github.com/butterflyx/GrundschutzQuiz
-
-
-## roadmap
-
-- [x] [add] threshold in % for passing the quiz
-- [ ] [add] possibility to change given answers before finishing a question
-- [ ] [add] learning mode: repeat a question before it is considered as answered correctly
-- [ ] [add] timer to simulate limited time in a RL test
-
 ### thank you
 
 - Diya Nag Chaudhury for inspiration of this project with her repo at https://github.com/cherryWood55/Quiz-Game/issues/
 
 ---
-
-# OSISG - the Open Source Information Security Game
-## creating a quiz with the best information security questions out there for your entertainment and learning
-
-**Please contribute!**
 
 ### How to play
 
