@@ -8,7 +8,7 @@ myquiz.clear()
 print(Colors.blue(myquiz.BANNER))
 print("")
 parser = argparse.ArgumentParser(formatter_class=argparse.MetavarTypeHelpFormatter)
-parser.add_argument("quizname", type=str, help="name of the quiz you want to play")
+parser.add_argument("quiz_text_file", type=str, help="Path of the TXT file with questions")
 parser.add_argument(
     "--t",
     nargs="?",
@@ -31,13 +31,13 @@ if args.i:
     print(myquiz.listGames())
     exit()
 else:
-    if args.quizname.endswith(".txt"):
-        assert os.path.isfile(args.quizname), f"File {args.quizname} not found"
-
-        dst = os.path.join(
-            "quizzes", os.path.basename(args.quizname).replace(".txt", ".json")
-        )
-        generate_from_file(args.quizname, dst=dst, verbose=False)
-        args.quizname = os.path.basename(dst).replace(".json", "")
+    os.makedirs("quizzes", exist_ok=True)
+    # expecting quizname a file name
+    assert os.path.isfile(args.quiz_text_file), f"File {args.quiz_text_file} not found"
+    dst = os.path.join(
+        "quizzes", os.path.basename(args.quiz_text_file).replace(".txt", ".json")
+    )
+    generate_from_file(args.quiz_text_file, dst=dst, verbose=False)
+    args.quizname = os.path.basename(dst).replace(".json", "")
 
     myquiz.playQuiz(args)
