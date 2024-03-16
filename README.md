@@ -1,17 +1,14 @@
 # multichoice-quiz
 A quiz game for multiple choice tests
 
-## installation & usage
+## Requirements
 
 This python script was designed to *clone'n run*, so no installation of third party package should be required, if Python is installed > v. 3.8.5
-
-Clone the git repo, move to the folder you cloned in and type `python3 quizgame.py -h` to get a full instruction.
-
-All quizzes must be put in the subfolder `./quizzes` as `.json` files.
+Just clone the repository, create the quiz and run `python main.py /path/to/quiz_on_topic.txt`
 
 ## Quiz creation
 
-In this fork it's possible to create easily a quiz. Provide a file like the following named for instance `questions.txt`, and then execute `python main.py /path/to/questions.txt`
+In this fork it's possible to create easily a quiz. Provide a file like the following named for instance `quiz_on_topic.txt`, and then execute `python main.py /path/to/quiz_on_topic.txt`
 Note that the * indicates which answer is the right one. Use empty lines to separate questions.
 
 ```
