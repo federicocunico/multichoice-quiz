@@ -1,0 +1,18 @@
+# Sezione Facile
+Quale è un numero?
+pippo
+*123
+alberto
+
+Chi è una persona?
+Verona
+*Paolo
+Milano
+Hannover
+Monaco
+
+# Sezione Complessa
+Quale di questi è un gatto?
+Venezia
+Albero
+*CiccioPanzoPanzotto detto Sir mi stravacco
